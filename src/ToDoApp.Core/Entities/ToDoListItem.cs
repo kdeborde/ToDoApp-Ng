@@ -5,7 +5,7 @@ namespace ToDoApp.Core.Entities
         public Guid Id { get; set; }
         public Guid ToDoListId { get; set; }
         public string Description { get; set; } = string.Empty;
-        public bool IsComplete { get; set; }
+        public bool IsComplete { get; set; } = false;
         public int Priority { get; set; }
     }
 }

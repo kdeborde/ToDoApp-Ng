@@ -32,5 +32,12 @@ namespace ToDoApp.Infrastructure.Repositories
 
             return toDoList;
         }
+
+        public async Task<ToDoList> CreateToDoListAsync(ToDoList newToDoList)
+        {
+            _context.ToDoLists.Add(newToDoList);
+            await _context.SaveChangesAsync();
+            return newToDoList;
+        }
     }
 }

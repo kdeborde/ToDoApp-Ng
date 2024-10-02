@@ -12,6 +12,17 @@ namespace ToDoApp.Application.Services
         {
             _toDoListRepository = toDoListRepository;
         }
+
+        public async Task<ToDoList> CreateToDoListAsync(ToDoList newToDoList)
+        {
+            return await _toDoListRepository.CreateToDoListAsync(newToDoList);
+        }
+
+        public Task DeleteToDoListAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<ToDoList>> GetToDoListsAsync()
         {
             return await _toDoListRepository.GetToDoListsAsync();
@@ -22,6 +33,11 @@ namespace ToDoApp.Application.Services
             var toDoList = await _toDoListRepository.GetToDoListWithItemsAsync(id);
             toDoList.Items = toDoList.Items.OrderBy(x => x.Priority).ToList();
             return toDoList;
+        }
+
+        public Task<ToDoList> UpdateToDoListAsync(ToDoList newToDoList)
+        {
+            throw new NotImplementedException();
         }
     }
 }
