@@ -5,11 +5,11 @@ namespace ToDoApp.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ToDoListController : ControllerBase
+    public class ListController : ControllerBase
     {
         private IToDoListService _toDoListService;
 
-        public ToDoListController(IToDoListService toDoListService)
+        public ListController(IToDoListService toDoListService)
         {
             _toDoListService = toDoListService;
         }

@@ -29,7 +29,10 @@ namespace ToDoApp.API
 
             // DI
             builder.Services.AddScoped<IToDoListRepository, ToDoListRepository>();
+            builder.Services.AddScoped<IToDoListItemRepository, ToDoListItemRepository>();
+
             builder.Services.AddScoped<IToDoListService, ToDoListService>();
+            builder.Services.AddScoped<IToDoListItemService, ToDoListItemService>();
 
             var app = builder.Build();
 
