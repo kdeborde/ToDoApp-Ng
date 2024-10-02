@@ -1,7 +1,11 @@
 
 using Microsoft.EntityFrameworkCore;
+using ToDoApp.Application.Interfaces;
+using ToDoApp.Application.Services;
+using ToDoApp.Core.Interfaces;
 using ToDoApp.Infrastructure;
 using ToDoApp.Infrastructure.Persistence;
+using ToDoApp.Infrastructure.Repositories;
 
 namespace ToDoApp.API
 {
@@ -22,6 +26,10 @@ namespace ToDoApp.API
             {
                 opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            // DI
+            builder.Services.AddScoped<IToDoListRepository, ToDoListRepository>();
+            builder.Services.AddScoped<IToDoListService, ToDoListService>();
 
             var app = builder.Build();
 
