@@ -15,6 +15,8 @@ namespace ToDoApp.Infrastructure
                     {
                         Id = Guid.NewGuid(),
                         Name = "Around the house",
+                        IsComplete = false,
+                        IsInProgress = false,
                         Items = new List<ToDoListItem>
                         {
                             new ToDoListItem
@@ -24,7 +26,7 @@ namespace ToDoApp.Infrastructure
                             new ToDoListItem
                             {
                                 Description = "Take Out Trash"
-                            },                
+                            },
                             new ToDoListItem
                             {
                                 Description = "Clean the garage"
@@ -35,6 +37,8 @@ namespace ToDoApp.Infrastructure
                     {
                         Id = Guid.NewGuid(),
                         Name = "In the yard",
+                        IsComplete = false,
+                        IsInProgress = false,
                         Items = new List<ToDoListItem>
                         {
                             new ToDoListItem
@@ -55,8 +59,10 @@ namespace ToDoApp.Infrastructure
                 for (int i = 0; i < toDoList.Count; i++)
                 {
                     int priorityCount = 1;
-                    toDoList[i].Items.ForEach(x => {
+                    toDoList[i].Items.ForEach(x =>
+                    {
                         x.ToDoListId = toDoList[i].Id;
+                        x.IsInProgress = false;
                         x.IsComplete = false;
                         x.Priority = priorityCount++;
                     });
@@ -64,7 +70,7 @@ namespace ToDoApp.Infrastructure
 
                 await context.AddRangeAsync(toDoList);
                 await context.SaveChangesAsync();
-            }    
+            }
         }
     }
 }

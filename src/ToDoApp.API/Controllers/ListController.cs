@@ -17,24 +17,24 @@ namespace ToDoApp.API.Controllers
         }
 
         [HttpGet]
-        [Route("GetToDoLists")]
-        public async Task<IActionResult> GetToDoListsAsync()
+        [Route("GetLists")]
+        public async Task<IActionResult> GetListsAsync()
         {
             var toDoLists = await _toDoListService.GetToDoListsAsync();
             return Ok(toDoLists);
         }
 
         [HttpGet]
-        [Route("GetToDoListWithItems/{id}")]
-        public async Task<IActionResult> GetToDoListWithItemsAsync(Guid id)
+        [Route("GetListWithItems/{id}")]
+        public async Task<IActionResult> GetListWithItemsAsync(Guid id)
         {
             var toDoList = await _toDoListService.GetToDoListWithItemsAsync(id);
             return Ok(toDoList);
         }
 
         [HttpPost]
-        [Route("CreateToDoList")]
-        public async Task<IActionResult> CreateToDoListAsync([FromBody] CreateToDoListDto newListDto)
+        [Route("CreateList")]
+        public async Task<IActionResult> CreateListAsync([FromBody] CreateToDoListDto newListDto)
         {
             var newToDoList = new ToDoList
             {

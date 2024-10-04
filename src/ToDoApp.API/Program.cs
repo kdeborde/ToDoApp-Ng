@@ -22,6 +22,10 @@ namespace ToDoApp.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            //CORS
+            builder.Services.AddCors();
+
+            // Database
             builder.Services.AddDbContext<DataContext>(opt =>
             {
                 opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -59,6 +63,9 @@ namespace ToDoApp.API
             {
                 throw new Exception(ex.Message);
             }
+
+            // CORS
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyHeader().WithOrigins("http://localhost:4200", "https://localhost:4200"));
 
             app.MapControllers();
 
